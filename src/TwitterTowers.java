@@ -3,15 +3,25 @@ import java.util.*;
 public class TwitterTowers {
 
 	public static void main(String[] args) {
-		System.out.print(5/2);
 		Scanner input = new Scanner(System.in);
 		boolean exit = false;
 		while(!exit) {
+			int numberEntered;
 			System.out.print("Enter 1 to select a rectangle shaped tower\n" + "Enter 2 to select a triangle shaped tower\n" + "Enter 3 to exit ");
-			int numberEntered = input.nextInt();
-			if (numberEntered == 3) {
+			try {
+				numberEntered = input.nextInt();
+			}
+			catch (Exception e){
+				exit = true;
+				continue;
+			}
+			if (numberEntered == 3) { //exit
 				exit = true;
 				System.out.print("Thank you for using twitter towers!");
+				continue;
+			}
+			if (numberEntered != 2 && numberEntered != 1) { 
+				System.out.print("Wrong input, please try again\n");
 				continue;
 			}
 			Tower tower = createTower(numberEntered, tower = null);
